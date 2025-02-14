@@ -1,14 +1,24 @@
 package main
 
-func twoSum(nums []int, target int) []int {
-	return
+import (
+	"fmt"
+	"slices"
+)
+
+func twoSum(nums []int, target int) bool {
+	contains := slices.Contains(nums, target)
+	return contains
 }
 
 func main() {
-	nli := []int{2, 7, 11, 15}
-	target := 9
-
-	twoSum(nli, target)
+	xi := []int{2, 7, 11, 15}
+	// xi := []int{2, 7, 6, 3}
+	target := 3
+	i := slices.IndexFunc(xi, func(n int) bool {
+		return n < 0
+	})
+	fmt.Println("First negative at index", i)
+	// fmt.Println(twoSum(xi, target))
 }
 
 /*
