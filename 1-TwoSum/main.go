@@ -2,23 +2,22 @@ package main
 
 import (
 	"fmt"
-	"slices"
 )
 
-func twoSum(nums []int, target int) bool {
-	contains := slices.Contains(nums, target)
-	return contains
+func twoSum(nums []int, target int) int {
+	closest := nums[0]
+	for i, v := range nums {
+		if nums[v] < target && nums[v] > closest {
+			closest = nums[v]
+		}
+	}
+	return closest
 }
 
 func main() {
-	xi := []int{2, 7, 11, 15}
-	// xi := []int{2, 7, 6, 3}
-	target := 3
-	i := slices.IndexFunc(xi, func(n int) bool {
-		return n < 0
-	})
-	fmt.Println("First negative at index", i)
-	// fmt.Println(twoSum(xi, target))
+	xi := []int{3, 2, 4}
+	target := 6
+	fmt.Println(twoSum(xi, target))
 }
 
 /*
@@ -41,6 +40,4 @@ Example 3:
 
 Input: nums = [3,3], target = 6
 Output: [0,1]
-
-
 */
