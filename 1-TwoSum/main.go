@@ -2,21 +2,26 @@ package main
 
 import (
 	"fmt"
+	"slices"
+	"sort"
 )
 
-func twoSum(nums []int, target int) int {
+func twoSum(nums []int, target int) (both []int) {
 	closest := nums[0]
-	for i, v := range nums {
+	for v := range nums {
 		if nums[v] < target && nums[v] > closest {
 			closest = nums[v]
 		}
 	}
-	return closest
+	sumNum := target - closest
+	both = append(both, slices.Index(nums, closest), slices.Index(nums, sumNum))
+	sort.Ints(both)
+	return both
 }
 
 func main() {
-	xi := []int{3, 2, 4}
-	target := 6
+	xi := []int{2, 7, 11, 15}
+	target := 9
 	fmt.Println(twoSum(xi, target))
 }
 
